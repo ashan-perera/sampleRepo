@@ -1,0 +1,132 @@
+    <div>
+        <form #bookForm = "ngForm">
+            <div class = "row">
+                <div class = "col-md-6">
+                    
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Title" [(ngModel)] = "book.title" name = "title" id = "title" required>
+                        <mat-error>Last Name is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Author" [(ngModel)] = "book.author" name = "author" required>
+                        <mat-error>Index No is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "ISBN" [(ngModel)] = "book.isbn" name = "isbn" id = "isbn">
+                    </mat-form-field>
+                </div>
+            </div>
+            <!-- <div class = "row">
+                <div class = "col-md-6">
+                    <img [src]="base64Image" />
+                </div>
+            </div> -->
+
+            <div class="form-row" [className]="IsType=='Range' ? 'd-flex' : 'd-none' ">
+                <div class="col-md-2">
+                    <div class="position-relative form-group">
+                        <label>Number</label>
+                        <input class="form-control" [(ngModel)] = "page.number" name = "number">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="position-relative form-group">
+                        <label>Content</label>
+                        <input class="form-control" [(ngModel)] = "page.content" name = "content">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="position-relative form-group">
+                        <label>Chapter</label>
+                        <input class="form-control" [(ngModel)] = "page.chapter" name = "chapter">
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <button [disabled] = "dsfdsfdf" mat-icon-button (click)="addPage(page)" id = "addButton">
+                        <i type = "button" class = "material-icons">
+                            add_circle_outline
+                        </i>
+                        Add Page
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-md-12" *ngIf = "pageList.length > 0">
+                <div class="card main-card mb-3">
+                    <div class="card-header">
+                        {{'PAGE_LIST'}}
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Number</th>
+                                <th scope="col">Content</th>
+                                <th scope="col">Chapter</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let page of pageList; index as i">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{ page.number }}</td>
+                                <td>{{ page.content}}</td>
+                                <td>{{ page.chapter}}</td>
+                                <td class="text-center">
+                                    <button mat-icon-button (click) = "editPage(page)" matTooltip="Click to Edit" class="iconbutton" color="primary">
+                                        <mat-icon aria-label="Edit">edit</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click) = "removePage(page)" matTooltip="Click to Delete" class="iconbutton" color="warn">
+                                        <mat-icon aria-label="Delete">delete</mat-icon>
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row" id = "uploader">
+                <div class="col-md-6">
+                    <h3>File Upload</h3>
+                    <div class="form-group">
+                        <input type="file" name="image" (change)="fileProgress($event)"/>
+                    </div>
+                    <div *ngIf="fileUploadProgress">
+                        Upload progress: {{ fileUploadProgress }}
+                    </div>
+                    <div class="image-preview mb-3" *ngIf="previewUrl">
+                        <img [src]="previewUrl" height="300"/>
+                    </div>
+            
+                    <div class="mb-3" *ngIf="uploadedFilePath">
+                        {{uploadedFilePath}}
+                    </div>
+                        
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                    </div>
+                </div>
+                <div class = "col-md-6">
+                
+                </div>
+                <!-- <img class="logo" src="assets/data/waterbottlesx.jpg"> -->
+            </div>
+
+            <div class = "example-button-row" id = "saveButtons">
+                <button mat-raised-button color = "primary" [disabled] = "bookForm.invalid" (click) = "onSaveClick(book)">Save</button>
+                <button mat-raised-button color = "primary" *ngIf = "updateClick" [disabled] = "studentForm.invalid" (click) = "onUpdateClick(student)">Update</button>
+            </div>
+            
+        </form>
+    </div>

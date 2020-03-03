@@ -1,0 +1,156 @@
+<!-- <button mat-icon-button data-toggle = "modal" data-target = "#myModal" (click) = "onAddClick()" id = "addButton">
+    <i type = "button" class = "material-icons">
+        add_circle_outline
+    </i>
+    Add Student
+</button> -->
+
+<button mat-icon-button [routerLink]="['/manage-student']" id = "addButton">
+    <i type = "button" class = "material-icons">
+        add_circle_outline
+    </i>
+    Add Student
+</button>
+
+<!-- <mat-form-field class = "example-full-width" id = "searchText">
+    <input matInput placeholder = "Search" [(ngModel)] = "searchText" name = "searchText">
+    
+</mat-form-field> -->
+<!-- <i class="material-icons">
+    search
+</i> -->
+
+<mat-card class="example-card">
+    <mat-card-content>
+    <table class = "table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>Index No</th>
+                <th>Student Name</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>DOB</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let student of studentList">
+                <td>{{student.indexNo}}</td>
+                <td>{{student.firstName}} {{student.lastName}}</td>
+                <td>{{student.addressLine1}}, {{student.addressLine2}}, {{student.addressLine3}}, {{student.city}}</td>
+                <td>{{student.contactNo}}</td>
+                <td>{{student.dateOfBirth | date: 'yyyy.MM.dd'}}</td>
+                <td>
+                    <div class="example-button-row">
+                        <!-- <button mat-button data-toggle = "modal" data-target = "#myModal" (click) = "onEditClick(student)">Edit</button>
+                        <button mat-button (click) = "onDeleteClick(student.studentId)">Delete</button> -->
+                        <button [routerLink]="['/manage-student', student.studentId, 'edit']" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary">
+                            <mat-icon aria-label="Edit">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">
+                            <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </mat-card-content>
+</mat-card>
+
+<div class = "container-fluid">
+    <div class = "modal fade" id = "myModal" role = "dialog">
+        <div class = "modal-dialog">
+        
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <button type = "button" class = "close" data-dismiss = "modal" #closeBtn>&times;</button>
+                <h4 *ngIf = "saveClick" class = "modal-title" >Add Student</h4>
+                <h4 *ngIf = "updateClick" class = "modal-title">Edit Student</h4>
+            </div>
+            <div class = "modal-body">
+                <form #studentForm = "ngForm">
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "First Name" [(ngModel)] = "student.firstName" name = "firstName" id = "firstName" required>
+                                <mat-error>First Name is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "Last Name" [(ngModel)] = "student.lastName" name = "lastName" id = "lastName" required>
+                                <mat-error>Last Name is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "Index No" [(ngModel)] = "student.indexNo" name = "indexNo" required>
+                                <mat-error>Index No is required!</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            Address
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "Address Line 1" [(ngModel)] = "student.addressLine1" name = "addressLine1">
+                            </mat-form-field>
+                        </div>
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "Address Line 2" [(ngModel)] = "student.addressLine2" name = "addressLine2">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "Address Line 3" [(ngModel)] = "student.addressLine3" name = "addressLine3">
+                            </mat-form-field>
+                        </div>
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                                <input matInput placeholder = "City" [(ngModel)] = "student.city" name = "city">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-md-6">
+                            <mat-form-field>
+                                <input matInput [matDatepicker] = "picker" [(ngModel)] = "student.dateOfBirth" name = "dateOfBirth" placeholder = "Date of Birth">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class = "col-md-6">
+                            <mat-form-field class = "example-full-width">
+                            <input matInput placeholder = "Contact No" [(ngModel)] = "student.contactNo" name = "contactNo" id = "contactNo">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class = "example-button-row" id = "saveButtons">
+                        <button mat-raised-button color = "primary" *ngIf = "saveClick" [disabled] = "studentForm.invalid" (click) = "onSaveClick(student)">Save</button>
+                        <button mat-raised-button color = "primary" *ngIf = "updateClick" [disabled] = "studentForm.invalid" (click) = "onUpdateClick(student)">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</div>
+
+<mat-paginator id = "paginator"
+  [pageIndex] = "pageIndex"
+  [length] = "length"
+  [pageSize] = "5"
+  
+  (page) = "onPageChange($event)">
+</mat-paginator>

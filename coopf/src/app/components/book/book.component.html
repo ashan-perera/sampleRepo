@@ -1,0 +1,155 @@
+<!-- <div class="header">
+    <h1>My Website</h1>
+    <p>A <b>responsive</b> website created by me.</p>
+  </div>
+  
+  <div class="navbar">
+    <a href="#" class="active">Home</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#" class="right">Link</a>
+  </div>
+  
+  <div class="row">
+    <div class="side">
+      <h2>About Me</h2>
+      <h5>Photo of me:</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+      <h3>More Text</h3>
+      <p>Lorem ipsum dolor sit ame.</p>
+      <div class="fakeimg" style="height:60px;">Image</div><br>
+      <div class="fakeimg" style="height:60px;">Image</div><br>
+      <div class="fakeimg" style="height:60px;">Image</div>
+    </div>
+    <div class="main">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <br>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <h2>Footer</h2>
+  </div> -->
+
+<div>
+  <button mat-icon-button class = "iconbutton" [routerLink]="['/manage-book']">
+    <mat-icon>add_circle</mat-icon> Add Book
+  </button>
+  <!-- <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+  </mat-form-field> -->
+  <div class = "mat-elevation-z8">
+    <mat-card>
+      <table mat-table [dataSource] = "bookDataSource" matSort>
+        <ng-container matColumnDef = "author">
+          <th mat-header-cell *matHeaderCellDef>Author</th>
+          <td mat-cell *matCellDef = "let element"> {{element.author}} </td>
+        </ng-container>
+        <ng-container matColumnDef = "isbn">
+          <th mat-header-cell *matHeaderCellDef>ISBN</th>
+          <td mat-cell *matCellDef = "let element"> {{element.isbn}} </td>
+        </ng-container>
+        <ng-container matColumnDef = "title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef = "let element"> {{element.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef = "imageUrl">
+          <th mat-header-cell *matHeaderCellDef>Image</th>
+          <td mat-cell *matCellDef = "let element">
+            <img *ngIf = "element.imageUrl != null" [src] = "element.imageUrl"/>
+            <div *ngIf = "element.imageUrl == null">
+              No Image
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef = "actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef = "let element">
+            <button [routerLink] = "['/manage-book', element.id, 'edit']" mat-icon-button matTooltip = "Click to Edit" class = "iconbutton" color = "primary">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </button>
+            <button mat-icon-button matTooltip = "Click to Delete" class = "iconbutton" color = "warn">
+              <mat-icon aria-label = "Delete">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+        <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions] = "[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </mat-card>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
