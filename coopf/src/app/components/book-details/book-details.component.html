@@ -1,0 +1,62 @@
+<div>
+    <form #bookForm = "ngForm">
+        <div class = "row">
+            <div class = "col-md-6">
+                <mat-form-field class = "example-full-width">
+                    <input matInput placeholder = "Title" [(ngModel)] = "book.title" name = "title" id = "title" readonly>
+                    <mat-error>Title is required!</mat-error>
+                </mat-form-field>
+            </div>
+            <div class = "col-md-6">
+                <mat-form-field class = "example-full-width">
+                    <input matInput placeholder = "Author" [(ngModel)] = "book.author" name = "author" readonly>
+                    <mat-error>Author is required!</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class = "row">
+            <div class = "col-md-6">
+                <mat-form-field class = "example-full-width">
+                    <input matInput placeholder = "ISBN" [(ngModel)] = "book.isbn" name = "isbn" id = "isbn" readonly>
+                </mat-form-field>
+            </div>
+            <div class = "col-md-6">
+                <mat-form-field class = "example-full-width">
+                    <input matInput placeholder = "Created At" [ngModel] = "book.createdAt | date: 'dd/MM/yyyy'" name = "createdAt" (ngModelChange) = "book.createdAt = $event" id = "createdAt" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-md-6">
+                <img *ngIf = "book.imageUrl != null" [src] = "book.imageUrl"/>
+            </div>
+        </div>
+
+        <div class="col-md-12" *ngIf = "pages.length > 0">
+            <div class="card main-card mb-3">
+                <div class="card-header">
+                    <h4>List of Pages</h4>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Chapter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let page of pages; index as i">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{ page.number }}</td>
+                            <td>{{ page.content}}</td>
+                            <td>{{ page.chapter}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>

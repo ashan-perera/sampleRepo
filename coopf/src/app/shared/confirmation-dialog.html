@@ -1,0 +1,11 @@
+<h1 mat-dialog-title style = "text-align:center;">Confirmation</h1>
+<hr>
+<div>
+    <div mat-dialog-content>
+        <p>{{confirmMessage}}</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button style = "color: #fff; background-color: #153961; margin: auto;" (click) = "dialogRef.close(true)">Confirm</button>
+        <button mat-stroked-button (click) = "dialogRef.close(false)">Cancel</button>
+    </div>
+</div>

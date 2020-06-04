@@ -42,7 +42,7 @@
   </div> -->
 
 <div>
-  <button mat-icon-button class = "iconbutton" [routerLink]="['/manage-book']">
+  <button mat-icon-button class = "iconbutton" [routerLink]="['/manage-book']" id = "addButton">
     <mat-icon>add_circle</mat-icon> Add Book
   </button>
   <!-- <mat-form-field>
@@ -50,7 +50,10 @@
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
   </mat-form-field> -->
   <div class = "mat-elevation-z8">
-    <mat-card>
+    <mat-card-header>
+        <mat-card-title>Table</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
       <table mat-table [dataSource] = "bookDataSource" matSort>
         <ng-container matColumnDef = "author">
           <th mat-header-cell *matHeaderCellDef>Author</th>
@@ -76,21 +79,27 @@
         <ng-container matColumnDef = "actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef = "let element">
-            <button [routerLink] = "['/manage-book', element.id, 'edit']" mat-icon-button matTooltip = "Click to Edit" class = "iconbutton" color = "primary">
-              <mat-icon aria-label="Edit">edit</mat-icon>
+            <button [routerLink] = "['/book-details', element.id]" mat-icon-button matTooltip = "View Book" class = "iconbutton" [color] = "color">
+              <mat-icon aria-label = "Delete">remove_red_eye</mat-icon>
             </button>
-            <button mat-icon-button matTooltip = "Click to Delete" class = "iconbutton" color = "warn">
-              <mat-icon aria-label = "Delete">delete</mat-icon>
+            <button [routerLink] = "['/manage-book', element.id, 'edit']" mat-icon-button matTooltip = "Edit Book" class = "iconbutton" color = "primary">
+              <mat-icon aria-label = "Edit">edit</mat-icon>
             </button>
+            <button mat-icon-button matTooltip = "Delete Book" class = "iconbutton" color = "warn">
+              <mat-icon aria-label = "Delete" (click) = "openConfirmationDialog(element.id)">delete</mat-icon>
+            </button>
+            <!-- <button (click) = "openConfirmationDialog()">Delete me</button> -->
           </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
         <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
       </table>
       <mat-paginator [pageSizeOptions] = "[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-    </mat-card>
+    </mat-card-content>
   </div>
 </div>
+
+<ngx-spinner bdColor = "rgba(99,117,112,0.8)" size = "medium" color = "#4e1f1f" type = "ball-atom" [fullScreen] = "true"><p style="color: white" ></p></ngx-spinner>
 
 
 

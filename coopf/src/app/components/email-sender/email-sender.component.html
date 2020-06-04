@@ -1,0 +1,66 @@
+<div class = "mat-elevation-z8">
+    <mat-card-header>
+
+    </mat-card-header>
+    <mat-card-content>
+        <form #emailForm = "ngForm">
+            <div class = "row">
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Senders Email" [(ngModel)] = "email.mailFrom" name = "mailFrom" required>
+                        <mat-error>Senders Email is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Receivers Email" [(ngModel)] = "email.mailTo" name = "mailTo" required>
+                        <mat-error>Receivers Email is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "CC" [(ngModel)] = "email.mailCc" name = "mailCc">
+                    </mat-form-field>
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "BCC" [(ngModel)] = "email.mailBcc" name = "mailBcc">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Content Type" [(ngModel)] = "email.contentType" name = "contentType">
+                        <mat-error>Senders Email is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Attachments" [(ngModel)] = "email.attachments" name = "attachments">
+                        <mat-error>Receivers Email is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <input matInput placeholder = "Subject" [(ngModel)] = "email.mailSubject" name = "mailSubject" required>
+                        <mat-error>Subject is required!</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class = "col-md-6">
+                    <mat-form-field class = "example-full-width">
+                        <textarea matInput placeholder = "Body" rows = "4" [(ngModel)] = "email.mailContent" name = "mailContent" required></textarea>
+                        <mat-error>Body is required!</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class = "example-button-row" id = "saveButtons">
+                <button mat-stroked-button color = "primary" [disabled] = "emailForm.invalid" (click) = "openConfirmationDialog(email)">Send</button>
+            </div>
+        </form>
+    </mat-card-content>
+</div>

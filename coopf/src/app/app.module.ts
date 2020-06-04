@@ -14,6 +14,11 @@ import { ManageStudentComponent } from './components/manage-student/manage-stude
 import { ToastrModule } from 'ngx-toastr';
 import { ManageBookComponent } from './components/manage-book/manage-book.component';
 import { MatStuffComponent } from './components/mat-stuff/mat-stuff.component';
+import { ConfirmationDialog } from './shared/confirmation-dialog';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { EmailSenderComponent } from './components/email-sender/email-sender.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,11 @@ import { MatStuffComponent } from './components/mat-stuff/mat-stuff.component';
     BookComponent,
     ManageStudentComponent,
     ManageBookComponent,
-    MatStuffComponent    
+    MatStuffComponent,
+    ConfirmationDialog,
+    BookDetailsComponent,
+    LoginComponent,
+    EmailSenderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +42,11 @@ import { MatStuffComponent } from './components/mat-stuff/mat-stuff.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialog]
 })
 export class AppModule { }

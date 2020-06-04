@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Book } from '../book/book';
 import { Page } from 'src/app/models/page';
 import { FormGroup } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-manage-book',
-  templateUrl: './manage-book.component.html',
-  styleUrls: ['./manage-book.component.scss']
+  selector: 'app-book-details',
+  templateUrl: './book-details.component.html',
+  styleUrls: ['./book-details.component.scss']
 })
-export class ManageBookComponent implements OnInit {
+export class BookDetailsComponent implements OnInit {
 
   private sub: Subscription
 
@@ -22,8 +22,7 @@ export class ManageBookComponent implements OnInit {
   pageFormGroup: FormGroup;
 
   constructor(private bookService: BookService,
-              private route: ActivatedRoute,
-              private router: Router) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.paramMap.subscribe(
@@ -45,27 +44,6 @@ export class ManageBookComponent implements OnInit {
       this.book = data;
       this.pages = data.pages;
     })
-  }
-
-  onSaveClick(book): void {
-    this.book.pages = this.pages;
-    this.bookService.saveBook(book).subscribe((data: any) => {});
-    this.router.navigateByUrl('/book');
-  }
-
-  addPage(page): void {
-    this.pages.push(page);
-    this.page = new Page();
-  }
-
-  editPage(page): void {
-    this.page = page;
-    this.removePage(page);
-  }
-
-  removePage(page): void {
-    this.pages = this.pages.filter(
-      item => item !== page);
   }
 
 }

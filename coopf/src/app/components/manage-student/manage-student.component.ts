@@ -4,6 +4,7 @@ import { Subscription } from '../../../../node_modules/rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CoopzService } from 'src/app/services/coopz.service';
 import { ToastrService } from 'ngx-toastr';
+import { Address } from 'src/app/models/address';
 
 @Component({
   selector: 'app-manage-student',
@@ -14,6 +15,8 @@ export class ManageStudentComponent implements OnInit {
 
   private sub: Subscription
   student: Student = new Student;
+  address: Address = new Address;
+  addresses: Address[] = [];
   studentList: any [];
 
   saveClick: boolean;
@@ -54,6 +57,7 @@ export class ManageStudentComponent implements OnInit {
   getProductById(id: number): void {
     this.coopzService.getStudentById(id).subscribe((data: any) => {
       this.student = data;
+      this.address = data.addresses[0];
 
       if (data.dateOfBirth) {
         this.student.dateOfBirth = new Date(data.dateOfBirth);
@@ -62,6 +66,8 @@ export class ManageStudentComponent implements OnInit {
   }
 
   onSaveClick(student): void {
+    this.addresses.push(this.address);
+    this.student.addresses = this.addresses;
     this.coopzService.saveStudent(student).subscribe((data: any) => {
 
       if (data.reqStatus == "SUCCESS") {

@@ -44,7 +44,7 @@
                     <div class="example-button-row">
                         <!-- <button mat-button data-toggle = "modal" data-target = "#myModal" (click) = "onEditClick(student)">Edit</button>
                         <button mat-button (click) = "onDeleteClick(student.studentId)">Delete</button> -->
-                        <button [routerLink]="['/manage-student', student.studentId, 'edit']" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary">
+                        <button [routerLink]="['/manage-student', student.id, 'edit']" mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary">
                             <mat-icon aria-label="Edit">edit</mat-icon>
                         </button>
                         <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn">

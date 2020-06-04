@@ -1,9 +1,11 @@
+import { Address } from 'src/app/models/address';
+
 export class Student {
     
-    studentId: number;
+    id: number;
     firstName: string;    
     lastName: string;   
-    address: string;   
+    addresses: Address[];  
     contactNo: string;
     dateOfBirth: Date;
 

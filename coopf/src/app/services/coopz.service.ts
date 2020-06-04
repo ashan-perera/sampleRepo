@@ -40,4 +40,12 @@ export class CoopzService {
 
   }
 
+  // #Email
+
+  sendEmail(email){
+
+    return this.httpClient.post(this.apiUrl + '/sendEmail', email);
+
+  }
+
 }
