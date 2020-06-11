@@ -48,4 +48,12 @@ export class CoopzService {
 
   }
 
+  getAllItems(){
+    return this.httpClient.get(this.apiUrl + '/items');
+  }
+
+  getItemById(id): any {
+    return this.httpClient.get(this.apiUrl + '/items/' + id);
+  }
+
 }

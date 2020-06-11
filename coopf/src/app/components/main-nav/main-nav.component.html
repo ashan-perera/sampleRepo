@@ -1,0 +1,51 @@
+<mat-sidenav-container class = "sidenav-container">
+    <mat-sidenav #drawer class = "sidenav" fixedInViewport = "true" [attr.role] = "(isHandset$ | async) ? 'dialog' : 'navigation'" 
+      [mode] = "(isHandset$ | async) ? 'over' : 'side'" [opened] = "!(isHandset$ | async)!.matches">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+      <mat-nav-list>
+          <a mat-list-item [routerLink] = "['/student']">Student</a>
+          <a mat-list-item [routerLink] = "['/book']">Book</a>
+          <a mat-list-item [routerLink] = "['/email-sender']">E-mail Sender</a>
+          <a mat-list-item [routerLink] = "['/file-upload']">File Upload</a>
+          <a mat-list-item [routerLink] = "['/mat-stuff']">Materials</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="(isHandset$ | async)!.matches">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <mat-toolbar-row>
+                <button mat-icon-button (click)="drawer.toggle()" aria-label="Example icon-button with a menu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span>School Manager</span>
+                <span class = "example-spacer"></span>
+                <mat-icon class = "example-icon" aria-hidden = "false" aria-label = "Example user verified icon" id = "userIcon">verified_user</mat-icon>
+                <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button> -->
+                <!-- <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                        <mat-icon>dialpad</mat-icon>
+                        <span>Redial</span>
+                    </button>
+                    <button mat-menu-item disabled>
+                        <mat-icon>voicemail</mat-icon>
+                        <span>Check voice mail</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>notifications_off</mat-icon>
+                        <span>Disable alerts</span>
+                    </button>
+                </mat-menu> -->
+            </mat-toolbar-row>
+        </mat-toolbar>
+      <!-- Add Content Here -->
+    </mat-sidenav-content>
+</mat-sidenav-container>

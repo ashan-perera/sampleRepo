@@ -8,9 +8,13 @@ import { MatStuffComponent } from './components/mat-stuff/mat-stuff.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { LoginComponent } from './components/login/login.component';
 import { EmailSenderComponent } from './components/email-sender/email-sender.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 
 const routes: Routes = [
+  
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+
   {  
     path: 'student', component: StudentComponent
   },
@@ -38,10 +42,12 @@ const routes: Routes = [
   },
   {  
     path: 'login', component: LoginComponent
-  }
-  ,
+  },
   {  
     path: 'email-sender', component: EmailSenderComponent
+  },
+  {  
+    path: 'file-upload', component: FileUploadComponent
   }
 ];
 

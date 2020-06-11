@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Student } from './student';
 import { CoopzService } from 'src/app/services/coopz.service';
+import { ExcelExportService } from 'src/app/services/excel-export.service';
 
 @Component({
   selector: 'app-student',
@@ -28,7 +29,8 @@ export class StudentComponent {
   saveClick: boolean;
   updateClick: boolean;
 
-  constructor(private coopzService: CoopzService) { }
+  constructor(private coopzService: CoopzService,
+              private _excelExportService: ExcelExportService) { }
 
   ngOnInit() {
     this.paramObject.offset = 0;
@@ -151,6 +153,10 @@ export class StudentComponent {
     console.log("ffdhgfdhgfdgf");
     
 
+  }
+
+  exportAsXLSX(): void {
+    this._excelExportService.exportAsExcelFile(this.studentList, 'sample');
   }
 
 }

@@ -19,6 +19,16 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { LoginComponent } from './components/login/login.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EmailSenderComponent } from './components/email-sender/email-sender.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +42,9 @@ import { EmailSenderComponent } from './components/email-sender/email-sender.com
     ConfirmationDialog,
     BookDetailsComponent,
     LoginComponent,
-    EmailSenderComponent
+    EmailSenderComponent,
+    FileUploadComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +55,15 @@ import { EmailSenderComponent } from './components/email-sender/email-sender.com
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTableExporterModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent],

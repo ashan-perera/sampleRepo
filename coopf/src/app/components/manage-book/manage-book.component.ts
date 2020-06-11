@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Book } from '../book/book';
 import { Page } from 'src/app/models/page';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-manage-book',
@@ -12,6 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./manage-book.component.scss']
 })
 export class ManageBookComponent implements OnInit {
+
+  @ViewChild('UploadFileInput', { static: false }) uploadFileInput: ElementRef;
+  fileUploadForm: FormGroup;
+  fileInputLabel: string;
 
   private sub: Subscription
 
@@ -23,7 +29,9 @@ export class ManageBookComponent implements OnInit {
 
   constructor(private bookService: BookService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private http: HttpClient,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.sub = this.route.paramMap.subscribe(
@@ -38,6 +46,10 @@ export class ManageBookComponent implements OnInit {
         }
       }
     );
+
+    this.fileUploadForm = this.formBuilder.group({
+      myfile: ['']
+    });
   }
 
   getBookById(id: number): void {
@@ -67,5 +79,46 @@ export class ManageBookComponent implements OnInit {
     this.pages = this.pages.filter(
       item => item !== page);
   }
+
+  // onFileSelect(event) {
+  //   let af = ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']
+  //   if (event.target.files.length > 0) {
+  //     const file = event.target.files[0];
+  //     // console.log(file);
+
+  //     if (!_.includes(af, file.type)) {
+  //       alert('Only EXCEL Docs Allowed!');
+  //     } else {
+  //       this.fileInputLabel = file.name;
+  //       this.fileUploadForm.get('myfile').setValue(file);
+  //     }
+  //   }
+  // }
+
+
+  // onFormSubmit() {
+
+  //   if (!this.fileUploadForm.get('myfile').value) {
+  //     alert('Please fill valid details!');
+  //     return false;
+  //   }
+
+  //   const formData = new FormData();
+  //   formData.append('formFile', this.fileUploadForm.get('myfile').value);
+  //   formData.append('agentId', '007');
+
+
+  //   this.http
+  //     .post<any>('http://www.example.com/api/upload', formData).subscribe(response => {
+  //       console.log(response);
+  //       if (response.statusCode === 200) {
+  //         // Reset the file input
+  //         this.uploadFileInput.nativeElement.value = "";
+  //         this.fileInputLabel = undefined;
+  //       }
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  // }
 
 }

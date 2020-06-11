@@ -4,6 +4,7 @@ import { BookService } from 'src/app/services/book.service';
 import { MatTableDataSource, MatPaginator, MatSort, MatDialogRef, MatDialog } from '@angular/material';
 import { ConfirmationDialog } from 'src/app/shared/confirmation-dialog';
 import { NgxSpinnerService } from "ngx-spinner";
+import { ExcelExportService } from 'src/app/services/excel-export.service';
 
 @Component({
   selector: 'app-book',
@@ -23,11 +24,13 @@ export class BookComponent implements OnInit {
 
   constructor(private bookService: BookService,
               public dialog: MatDialog,
-              private spinner: NgxSpinnerService) { }
+              private spinner: NgxSpinnerService,
+              private _excelExportService: ExcelExportService) { }
 
   ngOnInit() {
     this.bookService.bookAuthService().subscribe( (result) => {
       this.message = result.content;
+      let dor = new FormData()
     });
     this.getAllBook();
     
@@ -67,5 +70,9 @@ export class BookComponent implements OnInit {
     });
 
   }
+
+  // exportAsXLSX(): void {
+  //   this._excelExportService.exportAsExcelFile(this.bookDataSource, 'sample');
+  // }
 
 }

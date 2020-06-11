@@ -54,7 +54,7 @@
         <mat-card-title>Table</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <table mat-table [dataSource] = "bookDataSource" matSort>
+      <table mat-table matTableExporter  #exporter = "matTableExporter" [dataSource] = "bookDataSource" matSort>
         <ng-container matColumnDef = "author">
           <th mat-header-cell *matHeaderCellDef>Author</th>
           <td mat-cell *matCellDef = "let element"> {{element.author}} </td>
@@ -98,6 +98,10 @@
     </mat-card-content>
   </div>
 </div>
+
+<button mat-icon-button (click) = "exporter.exportTable('csv')">
+  <i class = "material-icons">get_app</i>Export to Excel
+</button>
 
 <ngx-spinner bdColor = "rgba(99,117,112,0.8)" size = "medium" color = "#4e1f1f" type = "ball-atom" [fullScreen] = "true"><p style="color: white" ></p></ngx-spinner>
 
