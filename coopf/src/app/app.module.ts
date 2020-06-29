@@ -29,6 +29,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AdminModule } from './admin/admin.module';
+import { D3WorkComponent } from './components/d3-work/d3-work.component';
+import { BubbleChartComponent } from './components/d3-work/bubblechart';
+import { SecurityComponent } from './components/security/security.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { AdminModule } from './admin/admin.module';
     LoginComponent,
     EmailSenderComponent,
     FileUploadComponent,
-    MainNavComponent
+    MainNavComponent,
+    D3WorkComponent,
+    BubbleChartComponent,
+    SecurityComponent
   ],
   imports: [
     BrowserModule,

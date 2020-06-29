@@ -6,5 +6,6 @@ export class Item {
     description: string;
     createdAt: Date;
     updatedAt: Date;
+    image: string;
 
 }

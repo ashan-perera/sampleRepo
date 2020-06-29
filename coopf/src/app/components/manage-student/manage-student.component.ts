@@ -25,7 +25,7 @@ export class ManageStudentComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private coopzService: CoopzService,
-              private toastr: ToastrService) { }
+              private _toastr: ToastrService) { }
 
   ngOnInit() {
     this.sub = this.route.paramMap.subscribe(
@@ -43,15 +43,15 @@ export class ManageStudentComponent implements OnInit {
   }
 
   showSaveSuccess() {
-    this.toastr.success('Record Successfully Saved!', 'Successful!');
+    this._toastr.success('Record Successfully Saved!', 'Successful!');
   }
 
   showUpdateSuccess() {
-    this.toastr.success('Record Successfully Updated!', 'Successful!');
+    this._toastr.success('Record Successfully Updated!', 'Successful!');
   }
 
   showError() {
-    this.toastr.error('Hello world!', 'Toastr fun!');
+    this._toastr.error('Hello world!', 'Toastr fun!');
   }
 
   getProductById(id: number): void {

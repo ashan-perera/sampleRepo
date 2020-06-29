@@ -1,0 +1,72 @@
+#store-content{
+    p {
+      margin-top: 0;
+      margin-bottom: 0px !important;
+      color: #9e9c9c !important;
+      font-size: 15px !important; 
+    }
+  
+    .row-grip {
+      padding: 0 16px !important;
+    }
+    ::ng-deep .mat-card-title {
+        font-size: 20px;
+    }
+  
+    .product-list-image-content {
+      height: 218px !important;
+      padding: 16px;
+    }
+    .product-list-image {
+      max-width: 17% !important;
+      width: 100% !important;
+      margin: 0 !important;
+      margin-right: 27px !important;
+      width: auto;
+    }
+  
+    .mobile-product-list-image {
+      width: auto;
+    }
+  
+    ::ng-deep .mat-card-image:first-child {
+      max-height: 100%;
+      max-width: 100%;
+      margin: 0 !important;
+      margin-top: 0px !important;
+      cursor: pointer;
+    }
+  
+    ::ng-deep .mat-card {
+      border-radius: 0 !important;
+      border: 0 !important;
+      border-bottom: 1px solid #e2e2e2 !important;
+      border-left: none;
+      border-right: none;
+      padding: 16px 0 !important;
+    }
+  
+    .product-list-content {
+      background: white;
+    }
+  
+    ::ng-deep .mat-card-subtitle {
+      margin: 15px 0 7px 0px;
+      color: #4e4e4e !important;
+      font-size: 17px !important;
+      font-weight: 600;
+    }
+    ::ng-deep .mat-card-title {
+      display: block;
+      margin-bottom: 0px;
+      cursor: pointer;
+    }
+    ::ng-deep .mat-card-title:hover {
+      color: #014bd4;
+      text-decoration: underline;
+    }
+    
+    .mobile-title {
+      font-size: 16px !important;
+    }
+  }

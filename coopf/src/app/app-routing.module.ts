@@ -9,6 +9,8 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { LoginComponent } from './components/login/login.component';
 import { EmailSenderComponent } from './components/email-sender/email-sender.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { D3WorkComponent } from './components/d3-work/d3-work.component';
+import { SecurityComponent } from './components/security/security.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,13 @@ const routes: Routes = [
   },
   {  
     path: 'file-upload', component: FileUploadComponent
+  },
+  {  
+    path: 'd3-work', component: D3WorkComponent
+  }
+  ,
+  {  
+    path: 'security', component: SecurityComponent
   }
 ];
 
