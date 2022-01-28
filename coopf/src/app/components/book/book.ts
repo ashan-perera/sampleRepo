@@ -8,5 +8,6 @@ export class Book {
     isbn: string;
     // pageList: Array<Page>;
     pages: Page[];
+    brand
 
 }

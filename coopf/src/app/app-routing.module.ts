@@ -11,6 +11,7 @@ import { EmailSenderComponent } from './components/email-sender/email-sender.com
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { D3WorkComponent } from './components/d3-work/d3-work.component';
 import { SecurityComponent } from './components/security/security.component';
+import { PartListComponent } from './components/part-list/part-list.component';
 
 
 const routes: Routes = [
@@ -53,10 +54,12 @@ const routes: Routes = [
   },
   {  
     path: 'd3-work', component: D3WorkComponent
-  }
-  ,
+  },
   {  
     path: 'security', component: SecurityComponent
+  },
+  {  
+    path: 'part-list', component: PartListComponent
   }
 ];
 

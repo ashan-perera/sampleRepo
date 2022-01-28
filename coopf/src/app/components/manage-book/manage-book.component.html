@@ -2,7 +2,8 @@
     <form #bookForm = "ngForm">
         <div class = "row">
             <div class = "col-md-6">
-                
+                <ng-select [(ngModel)] = "book.brand" name = "brand" [items] = "brands" bindLabel = "name" bindObject = "brand" placeholder = "Brand">
+                </ng-select>
             </div>
             <div class = "col-md-6">
                 <mat-form-field class = "example-full-width">
@@ -95,6 +96,8 @@
                 </table>
             </div>
         </div>
+
+        <button mat-raised-button color = "primary" (click) = "savePages()">Save Pages</button>
 
         <!-- <div class="row" id = "uploader">
             <div class="col-md-6">

@@ -3,7 +3,7 @@ import { Book } from '../book/book';
 import { Page } from 'src/app/models/page';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { BookService } from 'src/app/services/book.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
@@ -23,6 +23,9 @@ export class ManageBookComponent implements OnInit {
 
   book: Book = new Book();
   page: Page = new Page();
+
+  brands: Observable<any>;
+
   // pageList: Array<Page> = [];
   pages: Page[] = [];
   pageFormGroup: FormGroup;
@@ -39,7 +42,7 @@ export class ManageBookComponent implements OnInit {
         const id = +params.get('id');
 
         if (id) {
-          this.getBookById(id);
+          // this.getBookById(id);
           // this.updateClick = true;
         } else {
           // this.saveClick = true;
@@ -50,6 +53,8 @@ export class ManageBookComponent implements OnInit {
     this.fileUploadForm = this.formBuilder.group({
       myfile: ['']
     });
+
+    this.getAllBrands();
   }
 
   getBookById(id: number): void {
@@ -60,14 +65,21 @@ export class ManageBookComponent implements OnInit {
   }
 
   onSaveClick(book): void {
+    this.bookService.saveBrand(book.brand).subscribe((data: any) => {});
     this.book.pages = this.pages;
     this.bookService.saveBook(book).subscribe((data: any) => {});
-    this.router.navigateByUrl('/book');
+    // this.router.navigateByUrl('/book');
   }
 
   addPage(page): void {
     this.pages.push(page);
     this.page = new Page();
+    console.log(this.pages);
+    
+  }
+
+  savePages(): void {
+    this.bookService.savePages(this.pages).subscribe((data: any) => {});
   }
 
   editPage(page): void {
@@ -78,6 +90,12 @@ export class ManageBookComponent implements OnInit {
   removePage(page): void {
     this.pages = this.pages.filter(
       item => item !== page);
+  }
+
+  getAllBrands(): void {
+    this.bookService.getAllBrands().subscribe((data: any) => {
+      this.brands = data;
+    });
   }
 
   // onFileSelect(event) {

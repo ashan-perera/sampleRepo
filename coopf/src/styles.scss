@@ -51,3 +51,7 @@ body {
         .node--leaf {
             pointer-events: none;
 }
+
+.dataTables_filter,#data_table_paginate{
+    float: right !important;
+}

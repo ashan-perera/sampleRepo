@@ -1,0 +1,61 @@
+<div class="py-4 card mb-3 px-4">
+    <form [formGroup]="partFormGroup" >
+        <div class="row d-flex justify-content-around">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" formControlName="nameCtrl">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <label>Description:</label>
+                <textarea [ngClass]="{'is-invalid': partFormGroup.controls['descriptionCtrl'].invalid}"
+                    class="form-control" formControlName="descriptionCtrl" rows="3"></textarea>
+
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-around py-4">
+            <div class="col-md-5">
+                <label>Status</label>
+                <div class="form-group d-flex justify-content-around pr-5">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" (click)="enableInactiveReason(false)" class="custom-control-input"
+                            id="active" [checked]="hideInactiveReason" name="isActive">
+                        <label class="custom-control-label" for="active">ACTIVE</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" (click)="enableInactiveReason(true)" class="custom-control-input"
+                            id="inactive" [checked]="!hideInactiveReason" name="isActive">
+                        <label class="custom-control-label" for="inactive">INACTIVE</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group" [hidden]="HideInactiveReason">
+                        <label>INACTIVE_REASON</label>
+                    <textarea class="form-control" formControlName="inactiveReasonCtrl" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <input type="hidden" class="form-control" formControlName="createdDateTimeCtrl">
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <input type="hidden" class="form-control" formControlName="modifiedDateTimeCtrl">
+            </div>
+        </div>
+        <hr>
+        <div class="row px-4 d-flex justify-content-end">
+            <div class="col-md-5 text-right">
+                <button class="btn btn-danger mx-2" (click)="cancelForm()">Cancel</button>
+                <button class="btn btn-primary mx-2" (click)="saveData()">{{ btnText }}</button>
+            </div>
+        </div>
+    </form>
+
+</div>

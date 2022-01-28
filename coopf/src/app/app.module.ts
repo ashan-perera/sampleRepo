@@ -32,6 +32,13 @@ import { AdminModule } from './admin/admin.module';
 import { D3WorkComponent } from './components/d3-work/d3-work.component';
 import { BubbleChartComponent } from './components/d3-work/bubblechart';
 import { SecurityComponent } from './components/security/security.component';
+import { PartListComponent } from './components/part-list/part-list.component';
+import { PartComponent } from './components/part-list/part/part.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DeleteDialogBoxComponent } from './modals/delete-dialog-box/delete-dialog-box.component';
+import { NgbModalBackdrop } from '@ng-bootstrap/ng-bootstrap/modal/modal-backdrop';
+import { DeleteDialogBoxModule } from './modals/delete-dialog-box/delete-dialog-box.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -50,7 +57,9 @@ import { SecurityComponent } from './components/security/security.component';
     MainNavComponent,
     D3WorkComponent,
     BubbleChartComponent,
-    SecurityComponent
+    SecurityComponent,
+    PartListComponent,
+    PartComponent
   ],
   imports: [
     BrowserModule,
@@ -69,10 +78,17 @@ import { SecurityComponent } from './components/security/security.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    AdminModule
+    AdminModule,
+    AngularFontAwesomeModule,
+    DeleteDialogBoxModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmationDialog]
+  entryComponents: [
+    ConfirmationDialog,
+    
+    
+  ]
 })
 export class AppModule { }

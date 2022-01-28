@@ -1,0 +1,42 @@
+<button (click)="onOpen()">Create New</button>
+<app-part id="target" (save)="saveData($event)" (cancel)="closeForm()" [hidden]="!showPartForm"
+  [data]="data"></app-part>
+<div class="card mb-3 px-4 py-4">
+    <div class="no-gutters row">
+  
+      <div class="container table-container">
+        <table id="data_table" class="table table-hover" cellspacing="0">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NAME</th>
+              <th scope="col">DESCRIPTION</th>
+              <th scope="col" class="text-center">STATUS</th>
+              <th scope="col" class="text-center">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let part of partList; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td style="width:30%;">{{ part.name }}</td>
+              <td style="width:30%;">{{ part.description }}</td>
+  
+              <td class="text-center" style="width:15%;">
+                <div [hidden]="part.isActive === '0'" class="badge user-badge-active">Active</div>
+                <div [hidden]="part.isActive === '1'" class="badge user-badge-deacftive">Inactive</div>
+              </td>
+              <td class="text-center" style="width:15%;">
+                <button type="button" class="btn user-btn btn-edit btn-sm" (click)="openEditDialog(part)"><i
+                    class="fa fa-edit"></i>
+                </button>
+  
+                <button type="button" class="btn user-btn btn-delete btn-sm" (click)="openDeleteDialog(part)"><i
+                    class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

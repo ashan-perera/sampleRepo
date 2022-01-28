@@ -20,9 +20,16 @@
     search
 </i> -->
 
+<!-- <div id="content">
+    <h3>Hello, this is a H3 tag</h3>
+    
+    <p>a pararaph</p>
+    </div>
+<div id="editor"></div> -->
+
 <mat-card class="example-card">
     <mat-card-content>
-    <table class = "table table-hover table-dark">
+    <table class = "table table-hover table-dark" id = "content" #content>
         <thead>
             <tr>
                 <th>Index No</th>
@@ -149,6 +156,9 @@
         </div>
     </div>
 </div>
+
+<button (click)="downloadPDF()">Download PDF</button>
+<button (click)="createPdf()">Create PDF</button>
 
 <mat-paginator id = "paginator"
   [pageIndex] = "pageIndex"

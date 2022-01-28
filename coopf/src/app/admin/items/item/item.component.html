@@ -1,27 +1,29 @@
 <div id = "store-content">
 
-<div fxLayout = "row" fxLayoutAlign = "center center" class = "product-list-content">
-    <div fxLayout = "row wrap" fxFlex = "0 1 calc(94% - 32px)"
-        fxFlex.lt-md = "0 1 calc(100% - 32px)" fxFlex.gt-md = "0 1 calc(1280px + 32px)" fxLayoutAlign = "start">
-        <ng-container *ngFor = "let product of items | async">
-            <mat-card fxLayout = "row" fxFlex = "100%" fxLayoutAlign = "start start">
-                <div fxFlex = "0 1 35%" fxFlex.gt-sm = "0 1 20%" fxFlex.gt-xs = "0 1 30%"
-                    class = "product-list-image-content" fxLayoutAlign = "center center" fxLayout = "row">
-                    <img (click) = "navigateToProduct(product.id)" class = "product-list-image" mat-card-image src = "{{product.image}}">
-                </div>
-                <mat-card-content fxLayout = "column" fxFlex>
-                    <mat-card-title (click) = "navigateToProduct(product.id)">
-                        {{product.itemName}}
-                    </mat-card-title>
-                    <mat-card-subtitle>
-                        {{product.description}}
-                    </mat-card-subtitle>
-                    <p>iujiuhioj ;ij ;oije</p>
-                    <p>poijk y tr rdfhgv</p>
-                </mat-card-content>
-            </mat-card>
-        </ng-container>
-    </div>
+<div fxLayout = "row" fxLayoutAlign = "center center">
+    <mat-card class = "product-list-content">
+        <div fxLayout = "row wrap" fxFlex = "0 1 calc(94% - 32px)"
+            fxFlex.lt-md = "0 1 calc(100% - 32px)" fxFlex.gt-md = "0 1 calc(1280px + 32px)" fxLayoutAlign = "start">
+            <ng-container *ngFor = "let product of items | async">
+                <mat-card fxLayout = "row" fxFlex = "100%" fxLayoutAlign = "start start">
+                    <div fxFlex = "0 1 35%" fxFlex.gt-sm = "0 1 20%" fxFlex.gt-xs = "0 1 30%"
+                        class = "product-list-image-content" fxLayoutAlign = "center center" fxLayout = "row">
+                        <img (click) = "navigateToProduct(product.id)" class = "product-list-image" mat-card-image src = "{{product.image}}">
+                    </div>
+                    <mat-card-content fxLayout = "column" fxFlex>
+                        <mat-card-title (click) = "navigateToProduct(product.id)">
+                            {{product.itemName}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{product.description}}
+                        </mat-card-subtitle>
+                        <p>iujiuhioj ;ij ;oije</p>
+                        <p>poijk y tr rdfhgv</p>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </div>
+    </mat-card>
 </div>
 
 <mat-card>

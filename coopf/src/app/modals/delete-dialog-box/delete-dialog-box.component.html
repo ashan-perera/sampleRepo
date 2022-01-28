@@ -1,0 +1,18 @@
+<div class="app-modal-content">
+    <div class="modal-header">
+        <div class="icon-box">
+            <i class="fa fa-trash delete-icon"></i>
+        </div>
+        <h5 class="modal-title mx-2">ARE_YOU_SURE_?</h5>
+        <button type="button" class="close" (click)="onNoClick()" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">
+        <p>DO_YOU_REALY_WANT_TO_DELETE_THESE_RECORDS_?
+            <br>THESE_PROCESS_CANNOT_BE_UNDONE</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="onNoClick()">BUTTONCANCEL</button>
+        <button type="button" class="btn btn-danger" (click)="deleteContent()">BUTTONYES</button>
+    </div>
+</div>
